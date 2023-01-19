@@ -1,0 +1,46 @@
+BasedOnStyle: LLVM
+Language: Cpp
+Standard: c++20
+IndentWidth: 4
+TabWidth: 4
+ColumnLimit: 90
+UseTab: Always
+UseCRLF: false
+#ContinuationIndentWidth: 4
+
+AlignAfterOpenBracket: BlockIndent
+#AlignArrayOfStructures: Right
+AlignEscapedNewlines: Left
+AlignConsecutiveMacros: AcrossEmptyLines
+AlignOperands: AlignAfterOperator
+AlignTrailingComments: true
+
+AllowAllParametersOfDeclarationOnNextLine: true
+AllowAllArgumentsOnNextLine: true
+AllowShortFunctionsOnASingleLine: Empty
+AllowShortBlocksOnASingleLine: Empty
+
+AlwaysBreakAfterReturnType: None
+BinPackArguments: true
+BinPackParameters: false
+BreakBeforeBinaryOperators: None
+BreakBeforeTernaryOperators: true
+
+IndentAccessModifiers: true
+IncludeBlocks: Regroup
+IndentPPDirectives: AfterHash
+IndentWrappedFunctionNames: true
+NamespaceIndentation: All
+
+Cpp11BracedListStyle: false
+MaxEmptyLinesToKeep: 1
+ReflowComments: true
+SeparateDefinitionBlocks: Always
+SpaceBeforeCpp11BracedList: true
+SpacesBeforeTrailingComments: 2
+
+ReferenceAlignment: Right
+PointerAlignment: Right
+
+PenaltyBreakAssignment: 1000
+PenaltyReturnTypeOnItsOwnLine: 1000
