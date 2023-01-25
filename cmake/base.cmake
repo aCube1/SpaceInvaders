@@ -26,6 +26,5 @@ set_property(
 
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
 	add_definitions(-DUSE_DEBUG=1)
-	add_compile_options(-fsanitize=address -fno-omit-frame-pointer -O1)
-	set(CMAKE_EXE_LINKER_FLAGS -fsanitize=address)
+	add_compile_options(-O1)
 endif()

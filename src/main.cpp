@@ -1,14 +1,13 @@
-#include "engine.hpp"
+#include "core/Engine.hpp"
 
-#include <cstdlib>
+#include <iostream>
 
-int main() {
-	auto engine { game::Engine() };
-
-	while (engine.is_running()) {
-		engine.process_events();
-		engine.update();
-		engine.render();
+auto main() -> int {
+	try {
+		auto engine { game::Engine() };
+		engine.run();
+	} catch (std::exception& exception) {
+		std::cerr << "An error occurred: " << exception.what() << "\n";
 	}
 
 	return EXIT_SUCCESS;
