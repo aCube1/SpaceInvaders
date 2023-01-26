@@ -1,20 +1,18 @@
 #include "core/Engine.hpp"
 
 #include "core/EntityFactory.hpp"
+#include "system/input.hpp"
 #include "system/render.hpp"
 
 #include <stdexcept>
 
 namespace {
-	using namespace std::literals;
-
 	constexpr auto WINDOW_TITLE { "SpaceInvaders" };
 	constexpr auto WINDOW_WIDTH { 768 };
 	constexpr auto WINDOW_HEIGHT { 672 };
 
 	constexpr auto SCREEN_WIDTH { 256.0 };
 	constexpr auto SCREEN_HEIGHT { 224.0 };
-
 } // namespace
 
 namespace game {
@@ -58,6 +56,7 @@ namespace game {
 
 	void Engine::update(const sf::Time& dt) {
 		(void)dt;
+		system::input(m_registry);
 	}
 
 	void Engine::render() {

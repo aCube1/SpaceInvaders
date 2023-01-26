@@ -1,6 +1,8 @@
 #include "core/EntityFactory.hpp"
 
+#include "component/Direction.hpp"
 #include "component/Renderable.hpp"
+#include "component/Tag.hpp"
 #include "component/Transform.hpp"
 
 #include <SFML/System/Vector2.hpp>
@@ -15,11 +17,12 @@ namespace game::entity_factory {
 	) {
 		const auto e { registry.create() };
 
-		// NOTE: Placeholder position
-		const auto position { sf::Vector2f(0.0, 0.0) };
+		const auto position { sf::Vector2f(0.0, 0.0) }; // NOTE: Placeholder position
 
 		// Add components
+		registry.emplace<DefenderTag>(e);
 		registry.emplace<Transform>(e, position);
+		registry.emplace<Direction>(e);
 		registry.emplace<Renderable>(
 			e, asset_manager.get_sprite(game::Sprites::defender)
 		);

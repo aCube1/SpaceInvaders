@@ -22,6 +22,7 @@ target_sources(
 		src/core/Engine.cpp
 		src/core/EntityFactory.cpp
 
+		src/system/input.cpp
 		src/system/render.cpp
 )
 
@@ -40,9 +41,12 @@ target_precompile_headers(
 		src/core/Engine.hpp
 		src/core/EntityFactory.hpp
 
+		src/system/input.hpp
 		src/system/render.hpp
 
+		src/component/Direction.hpp
 		src/component/Renderable.hpp
+		src/component/Tag.hpp
 		src/component/Transform.hpp
 )
 

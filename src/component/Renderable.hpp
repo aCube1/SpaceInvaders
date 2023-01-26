@@ -6,7 +6,7 @@
 namespace game::component {
 	struct Renderable {
 		public:
-			sf::Sprite sprite;
+			sf::Sprite sprite {};
 	};
 } // namespace game::component
 

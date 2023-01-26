@@ -16,7 +16,7 @@ namespace game {
 
 		private:
 			void process_events();
-			void update(const sf::Time& time);
+			void update(const sf::Time& dt);
 			void render();
 
 			sf::RenderWindow m_window {};

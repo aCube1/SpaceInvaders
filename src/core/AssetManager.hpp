@@ -15,7 +15,7 @@ namespace game {
 			AssetManager();
 			~AssetManager() = default;
 
-			const sf::Sprite& get_sprite(Sprites sprite) const {
+			auto get_sprite(const Sprites sprite) const -> const sf::Sprite& {
 				return m_sprites.at(sprite);
 			}
 
