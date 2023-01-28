@@ -8,19 +8,18 @@ namespace space {
 	Engine::Engine() {
 		// Init Window and set flags.
 		SetConfigFlags(FLAG_VSYNC_HINT);
-		InitWindow(space::WINDOW_WIDTH, space::WINDOW_HEIGHT, space::WINDOW_TITLE);
+		InitWindow(WINDOW_WIDTH, WINDOW_HEIGHT, WINDOW_TITLE);
 
 		// Load screen render texture.
-		m_screen = LoadRenderTexture(space::SCREEN_WIDTH, space::SCREEN_HEIGHT);
+		m_screen = LoadRenderTexture(SCREEN_WIDTH, SCREEN_HEIGHT);
 
 		// Load default assets.
-		m_assets.load();
+		m_assets = LoadTexture(SPRITE_FILEPATH);
 	}
 
 	Engine::~Engine() {
-		m_assets.unload();
-
 		// Deinit raylib.
+		UnloadTexture(m_assets);
 		UnloadRenderTexture(m_screen);
 		CloseWindow();
 	}
@@ -42,12 +41,11 @@ namespace space {
 		while (is_running && !WindowShouldClose()) {
 			BeginTextureMode(m_screen);
 			ClearBackground(BLANK);
-			DrawFPS(0, 0);
-			m_assets.drawSprite(SpriteRegion::defender, Vector2{20, 20});
 			EndTextureMode();
 
 			BeginDrawing();
 			ClearBackground(BLACK);
+			DrawFPS(0, 0);
 			DrawTexturePro(
 				m_screen.texture, screen_src, screen_dest, Vector2 { 0.0, 0.0 }, 0.0,
 				WHITE

@@ -18,7 +18,6 @@ target_sources(
 	PRIVATE
 		src/main.cpp
 
-		src/core/Assets.cpp
 		src/core/Engine.cpp
 )
 
@@ -33,10 +32,11 @@ target_precompile_headers(
 	PRIVATE
 		src/utils.hpp
 
-		src/core/Assets.hpp
 		src/core/Engine.hpp
 
+		src/component/Position.hpp
 		src/component/Sprite.hpp
+		src/component/Tag.hpp
 )
 
 set_default_warnings(${PROJECT_NAME})

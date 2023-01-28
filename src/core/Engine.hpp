@@ -1,8 +1,6 @@
 #ifndef _SPACE_CORE_ENGINE_HPP_
 #define _SPACE_CORE_ENGINE_HPP_
 
-#include "core/Assets.hpp"
-
 #include <entt/entity/registry.hpp>
 #include <raylib.h>
 
@@ -16,7 +14,7 @@ namespace space {
 
 		private:
 			entt::registry m_registry {};
-			Assets m_assets {};
+			Texture2D m_assets {};
 
 			RenderTexture2D m_screen {};
 	};

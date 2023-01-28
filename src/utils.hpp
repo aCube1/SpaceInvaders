@@ -8,6 +8,8 @@ namespace space {
 
 	inline constexpr auto SCREEN_WIDTH { 256 };
 	inline constexpr auto SCREEN_HEIGHT { 224 };
+
+	inline constexpr auto SPRITE_FILEPATH { "assets/space-invaders.png" };
 } // namespace space
 
 #endif /* _SPACE_UTILS_HPP_ */
