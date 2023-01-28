@@ -18,12 +18,8 @@ target_sources(
 	PRIVATE
 		src/main.cpp
 
-		src/core/AssetManager.cpp
+		src/core/Assets.cpp
 		src/core/Engine.cpp
-		src/core/EntityFactory.cpp
-
-		src/system/input.cpp
-		src/system/render.cpp
 )
 
 target_include_directories(
@@ -37,17 +33,10 @@ target_precompile_headers(
 	PRIVATE
 		src/utils.hpp
 
-		src/core/AssetManager.hpp
+		src/core/Assets.hpp
 		src/core/Engine.hpp
-		src/core/EntityFactory.hpp
 
-		src/system/input.hpp
-		src/system/render.hpp
-
-		src/component/Direction.hpp
-		src/component/Renderable.hpp
-		src/component/Tag.hpp
-		src/component/Transform.hpp
+		src/component/Sprite.hpp
 )
 
 set_default_warnings(${PROJECT_NAME})

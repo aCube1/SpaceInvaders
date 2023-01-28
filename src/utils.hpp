@@ -1,12 +1,13 @@
-#ifndef _UTILS_HPP_
-#define _UTILS_HPP_
+#ifndef _SPACE_UTILS_HPP_
+#define _SPACE_UTILS_HPP_
 
-#include <bitset>
-#include <cstdint>
+namespace space {
+	inline constexpr auto WINDOW_TITLE { "SpaceInvaders" };
+	inline constexpr auto WINDOW_WIDTH { 768 };
+	inline constexpr auto WINDOW_HEIGHT { 672 };
 
-namespace game {
 	inline constexpr auto SCREEN_WIDTH { 256 };
 	inline constexpr auto SCREEN_HEIGHT { 224 };
-} // namespace game
+} // namespace space
 
-#endif /* _UTILS_HPP_ */
+#endif /* _SPACE_UTILS_HPP_ */

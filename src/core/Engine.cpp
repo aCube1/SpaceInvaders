@@ -1,67 +1,58 @@
 #include "core/Engine.hpp"
 
-#include "core/EntityFactory.hpp"
-#include "system/input.hpp"
-#include "system/render.hpp"
+#include "utils.hpp"
 
-#include <stdexcept>
+#include <raylib.h>
 
-namespace {
-	constexpr auto WINDOW_TITLE { "SpaceInvaders" };
-	constexpr auto WINDOW_WIDTH { 768 };
-	constexpr auto WINDOW_HEIGHT { 672 };
-
-	constexpr auto SCREEN_WIDTH { 256.0 };
-	constexpr auto SCREEN_HEIGHT { 224.0 };
-} // namespace
-
-namespace game {
+namespace space {
 	Engine::Engine() {
-		// Set default camera.
-		m_camera.reset(sf::FloatRect(0.0, 0.0, SCREEN_WIDTH, SCREEN_HEIGHT));
+		// Init Window and set flags.
+		SetConfigFlags(FLAG_VSYNC_HINT);
+		InitWindow(space::WINDOW_WIDTH, space::WINDOW_HEIGHT, space::WINDOW_TITLE);
 
-		// Initialize RenderWindow and apply default configuration.
-		m_window.create(
-			sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), WINDOW_TITLE,
-			sf::Style::Titlebar | sf::Style::Close
-		);
-		m_window.setVerticalSyncEnabled(true);
-		m_window.setView(m_camera);
+		// Load screen render texture.
+		m_screen = LoadRenderTexture(space::SCREEN_WIDTH, space::SCREEN_HEIGHT);
 
-		// Create entities.
-		entity_factory::create_defender(m_registry, m_asset_manager);
+		// Load default assets.
+		m_assets.load();
+	}
+
+	Engine::~Engine() {
+		m_assets.unload();
+
+		// Deinit raylib.
+		UnloadRenderTexture(m_screen);
+		CloseWindow();
 	}
 
 	void Engine::run() {
-		auto clock { sf::Clock() };
+		auto is_running { true };
 
-		while (m_running && m_window.isOpen()) {
-			const auto delta_time { clock.restart() };
+		// clang-format off
+		constexpr Rectangle screen_src {
+			0.0, 0.0,
+			static_cast<float>(SCREEN_WIDTH), static_cast<float>(-SCREEN_HEIGHT)
+		};
+		constexpr Rectangle screen_dest {
+			0.0, 0.0,
+			static_cast<float>(WINDOW_WIDTH), static_cast<float>(WINDOW_HEIGHT)
+		};
+		// clnag-format on
 
-			process_events();
-			update(delta_time);
-			render();
+		while (is_running && !WindowShouldClose()) {
+			BeginTextureMode(m_screen);
+			ClearBackground(BLANK);
+			DrawFPS(0, 0);
+			m_assets.drawSprite(SpriteRegion::defender, Vector2{20, 20});
+			EndTextureMode();
+
+			BeginDrawing();
+			ClearBackground(BLACK);
+			DrawTexturePro(
+				m_screen.texture, screen_src, screen_dest, Vector2 { 0.0, 0.0 }, 0.0,
+				WHITE
+			);
+			EndDrawing();
 		}
 	}
-
-	void Engine::process_events() {
-		sf::Event event {};
-
-		while (m_window.pollEvent(event)) {
-			if (event.type == sf::Event::Closed) {
-				m_window.close();
-			}
-		}
-	}
-
-	void Engine::update(const sf::Time& dt) {
-		(void)dt;
-		system::input(m_registry);
-	}
-
-	void Engine::render() {
-		m_window.clear();
-		system::render(m_registry, m_window);
-		m_window.display();
-	}
-} // namespace game
+} // namespace space

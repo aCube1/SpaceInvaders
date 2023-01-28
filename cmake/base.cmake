@@ -27,4 +27,9 @@ set_property(
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
 	add_definitions(-DUSE_DEBUG=1)
 	add_compile_options(-O1)
+
+	# Use address sanitizer flags.
+	if (USE_SANITIZER_ASAN)
+		set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=leak -fsanitize=address -fno-omit-frame-pointer -fsanitize=undefined")
+	endif()
 endif()
