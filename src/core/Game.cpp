@@ -1,7 +1,9 @@
 #include "core/Game.hpp"
 
 #include "core/Factory.hpp"
-#include "system/system.hpp"
+#include "system/draw.hpp"
+#include "system/input.hpp"
+#include "system/movement.hpp"
 
 namespace space {
 	void Game::init() {
@@ -11,6 +13,7 @@ namespace space {
 	void Game::update() {
 		const auto dt { GetFrameTime() };
 
+		system::input(m_registry);
 		system::movement(m_registry, dt);
 	}
 

@@ -13,7 +13,7 @@ namespace {
 	constexpr auto PLAYER_X { (space::SCREEN_WIDTH - 16) / 2 };
 	constexpr auto PLAYER_Y { space::SCREEN_HEIGHT - 48 };
 
-	constexpr auto SPEED { 200.0 };
+	constexpr auto SPEED { 100.0 };
 } // namespace
 
 namespace space {

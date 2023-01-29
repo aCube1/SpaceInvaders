@@ -1,6 +1,7 @@
+#include "system/draw.hpp"
+
 #include "component/Position.hpp"
 #include "component/Sprite.hpp"
-#include "system/system.hpp"
 
 namespace {
 	using namespace space::component;

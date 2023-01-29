@@ -23,6 +23,7 @@ target_sources(
 		src/core/Game.cpp
 
 		src/system/draw.cpp
+		src/system/input.cpp
 		src/system/movement.cpp
 )
 
@@ -41,7 +42,9 @@ target_precompile_headers(
 		src/core/Factory.hpp
 		src/core/Game.hpp
 
-		src/system/system.hpp
+		src/system/draw.hpp
+		src/system/input.hpp
+		src/system/movement.hpp
 
 		src/component/Position.hpp
 		src/component/Sprite.hpp

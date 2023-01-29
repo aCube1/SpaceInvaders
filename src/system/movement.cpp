@@ -1,13 +1,18 @@
+#include "system/movement.hpp"
+
 #include "component/Position.hpp"
 #include "component/Velocity.hpp"
-#include "system/system.hpp"
 #include "utils.hpp"
 
 #include <algorithm>
 
 namespace {
 	using namespace space::component;
-}
+
+	// Sides limits.
+	constexpr auto LEFT_LIMIT { 0.0f };
+	constexpr auto RIGHT_LIMIT { static_cast<float>(space::SCREEN_WIDTH - 16) };
+} // namespace
 
 namespace space {
 	void system::movement(entt::registry& registry, float dt) {
@@ -20,7 +25,7 @@ namespace space {
 			position.x += velocity.speed * dt * velocity.motion;
 			velocity.motion = 0;
 
-			std::clamp<float>(position.x, 0.0, static_cast<float>(SCREEN_WIDTH));
+			position.x = std::clamp(position.x, LEFT_LIMIT, RIGHT_LIMIT);
 		}
 	}
 } // namespace space
