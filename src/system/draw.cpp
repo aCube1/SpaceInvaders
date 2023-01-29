@@ -6,17 +6,17 @@ namespace {
 	using namespace space::component;
 }
 
-namespace space::system {
-	void draw(entt::registry& registry) {
+namespace space {
+	void system::draw(entt::registry& registry) {
 		const auto view { registry.view<Sprite, Position>() };
 
-		for (const auto entity : view) {
-			const auto& sprite { view.get<Sprite>(entity) };
-			const auto& position { view.get<Position>(entity) };
+		for (const auto e : view) {
+			const auto& sprite { view.get<Sprite>(e) };
+			const auto& position { view.get<Position>(e) };
 
 			DrawTextureRec(
 				sprite.texture, sprite.region, position.toVector(), sprite.color
 			);
 		}
 	}
-} // namespace space::system
+} // namespace space

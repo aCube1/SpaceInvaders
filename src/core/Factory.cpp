@@ -3,6 +3,7 @@
 #include "component/Position.hpp"
 #include "component/Sprite.hpp"
 #include "component/Tag.hpp"
+#include "component/Velocity.hpp"
 #include "utils.hpp"
 
 namespace {
@@ -11,6 +12,8 @@ namespace {
 	// Player initial position.
 	constexpr auto PLAYER_X { (space::SCREEN_WIDTH - 16) / 2 };
 	constexpr auto PLAYER_Y { space::SCREEN_HEIGHT - 48 };
+
+	constexpr auto SPEED { 200.0 };
 } // namespace
 
 namespace space {
@@ -19,7 +22,11 @@ namespace space {
 
 		// Add components.
 		registry.emplace<DefenderTag>(e);
+
 		registry.emplace<Position>(e, Vector2 { PLAYER_X, PLAYER_Y });
+
 		registry.emplace<Sprite>(e, assets, Rectangle { 0.0, 0.0, 16.0, 16.0 });
+
+		registry.emplace<Velocity>(e, SPEED);
 	}
 } // namespace space
