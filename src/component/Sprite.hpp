@@ -5,7 +5,8 @@ namespace space::component {
 	struct Sprite {
 		public:
 			Texture2D& texture;
-			Rectangle region;
+			Rectangle region {};
+			Color color { WHITE };
 	};
 } // namespace space::component
 

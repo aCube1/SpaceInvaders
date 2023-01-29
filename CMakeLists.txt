@@ -19,6 +19,10 @@ target_sources(
 		src/main.cpp
 
 		src/core/Engine.cpp
+		src/core/Factory.cpp
+		src/core/Game.cpp
+
+		src/system/draw.cpp
 )
 
 target_include_directories(
@@ -33,6 +37,10 @@ target_precompile_headers(
 		src/utils.hpp
 
 		src/core/Engine.hpp
+		src/core/Factory.hpp
+		src/core/Game.hpp
+
+		src/system/system.hpp
 
 		src/component/Position.hpp
 		src/component/Sprite.hpp

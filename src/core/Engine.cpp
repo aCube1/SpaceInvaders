@@ -15,6 +15,8 @@ namespace space {
 
 		// Load default assets.
 		m_assets = LoadTexture(SPRITE_FILEPATH);
+
+		m_game.init();
 	}
 
 	Engine::~Engine() {
@@ -36,21 +38,28 @@ namespace space {
 			0.0, 0.0,
 			static_cast<float>(WINDOW_WIDTH), static_cast<float>(WINDOW_HEIGHT)
 		};
-		// clnag-format on
+		// clang-format on
 
 		while (is_running && !WindowShouldClose()) {
+			m_game.update();
+
+			// clang-format off
 			BeginTextureMode(m_screen);
-			ClearBackground(BLANK);
+				ClearBackground(BLANK);
+				m_game.render();
 			EndTextureMode();
 
 			BeginDrawing();
-			ClearBackground(BLACK);
-			DrawFPS(0, 0);
-			DrawTexturePro(
-				m_screen.texture, screen_src, screen_dest, Vector2 { 0.0, 0.0 }, 0.0,
-				WHITE
-			);
+				ClearBackground(BLACK);
+
+				DrawFPS(0, 0);
+
+				DrawTexturePro(
+					m_screen.texture, screen_src, screen_dest, Vector2 { 0.0, 0.0 }, 0.0,
+					WHITE
+				);
 			EndDrawing();
+			// clang-format on
 		}
 	}
 } // namespace space

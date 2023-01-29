@@ -4,7 +4,14 @@
 namespace space::component {
 	struct Position {
 		public:
-			Vector2 value {};
+			Position(Vector2 position) : x { position.x }, y { position.y } {};
+
+			Vector2 toVector() const {
+				return Vector2 { x, y };
+			};
+
+			float x {};
+			float y {};
 	};
 } // namespace space::component
 
